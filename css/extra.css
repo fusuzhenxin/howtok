@@ -1,0 +1,173 @@
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/geist.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../fonts/geist-mono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+html { height: 100%; }
+body { margin: 0; min-height: 100%; }
+button { font-family: inherit; font-size: inherit; line-height: inherit; color: inherit; cursor: pointer; }
+.hover\:shadow-card-hover:hover { box-shadow: 0 4px 12px #0f172a14, 0 2px 4px #0f172a0d; }
+.dark .hover\:shadow-card-hover:hover { box-shadow: none; }
+.filters.is-open { display: flex !important; flex-direction: column; gap: .5rem; }
+.prewrap { white-space: pre-wrap; }
+#palette { position: fixed; inset: 0; z-index: 70; display: none; }
+#palette.open { display: block; }
+#palette .backdrop { position: absolute; inset: 0; background: rgba(10, 14, 22, .48); }
+.sort-menu { position: absolute; right: 0; top: calc(100% + 6px); z-index: 40; min-width: 9.5rem; }
+.detail-table td { vertical-align: top; }
+#veridrop-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  min-height: 76px;
+  padding: 16px 24px;
+  background: #0e7a53;
+  color: #fff;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-decoration: none;
+}
+#veridrop-bar:hover,
+#veridrop-bar:focus-visible {
+  background: #0b5c3f;
+  color: #fff;
+  text-decoration: none;
+}
+#veridrop-bar .veridrop-url {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: #fff;
+  color: #0b5c3f;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+@media (max-width: 640px) {
+  #veridrop-bar { min-height: 64px; padding: 14px 16px; font-size: 22px; gap: 0.4rem 0.7rem; }
+  #veridrop-bar .veridrop-url { padding: 4px 12px; font-size: 16px; }
+}
+.dark #veridrop-bar { background: #129c6a; }
+.dark #veridrop-bar:hover,
+.dark #veridrop-bar:focus-visible { background: #0e7a53; }
+.stations-sticky { top: var(--ht-header, 132px); }
+#stations.stations-anchor { scroll-margin-top: calc(var(--ht-header, 132px) + 8px); }
+.mail-card { max-width: 42rem; }
+.mail-form { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.mail-grid { display: grid; gap: 12px; }
+@media (min-width: 640px) {
+  .mail-grid.two { grid-template-columns: 1fr 1fr; }
+}
+.mail-form label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 8px;
+  row-gap: 6px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--c-fg);
+}
+.mail-form label input,
+.mail-form label textarea,
+.mail-form .mail-drop { flex: 1 0 100%; width: 100%; }
+.mail-opt { font-weight: 500; color: var(--c-muted); }
+.mail-form input,
+.mail-form textarea,
+.mail-drop-btn {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  background: var(--c-surface);
+  color: var(--c-fg);
+  padding: 11px 12px;
+  font: inherit;
+  font-weight: 450;
+  text-align: left;
+}
+.mail-form textarea { min-height: 104px; resize: vertical; }
+.mail-form input:focus,
+.mail-form textarea:focus,
+.mail-drop-btn:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 1px; }
+.mail-drop { position: relative; }
+.mail-drop-btn.is-empty { color: var(--c-muted); }
+.mail-drop-menu {
+  display: none;
+  position: absolute;
+  z-index: 40;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  padding: 6px;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  background: var(--c-surface);
+  box-shadow: 0 8px 24px #0f172a1a;
+}
+.mail-drop.is-open .mail-drop-menu { display: block; }
+.mail-form .mail-drop-menu label {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.mail-form .mail-drop-menu label:hover { background: var(--c-surface-2); }
+.mail-form .mail-drop-menu input {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--c-accent);
+}
+.mail-form button[type="submit"] {
+  align-self: flex-start;
+  min-height: 44px;
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 20px;
+  background: var(--c-accent);
+  color: #fff;
+  font-weight: 750;
+}
+.mail-form button[type="submit"]:hover { background: var(--c-accent-strong); }
+.mail-form button[type="submit"]:disabled { opacity: .6; }
+.mail-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.mail-note { min-height: 1.25em; font-size: 13px; font-weight: 650; color: var(--c-accent-strong); }
+.mail-note.is-err { color: #b45309; }
+.dark .mail-note.is-err { color: #fbbf24; }
+.mail-test {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+.mail-test p { margin: 0; font-size: 12px; font-weight: 450; line-height: 1.6; color: var(--c-muted); }
